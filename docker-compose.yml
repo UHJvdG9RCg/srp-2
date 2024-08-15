@@ -1,0 +1,12 @@
+version: '3'
+services:
+  db:
+    restart: unless-stopped
+    image: postgres:14
+    container_name: sr-db
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_DB=${DB_DATABASE:-postgres}
+    ports:
+      - "${DB_PORT:-5434}:5432"
